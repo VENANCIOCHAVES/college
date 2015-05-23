@@ -75,7 +75,7 @@ public class mediaAlgoritmos{
 	public static void escreveVetor(double [] vetor){
 		for(int i=0; i<vetor.length; i++){
 			//System.out.println("O aluno"nome[i]+" tem" +mb1[i]+" de MB1\n"+mb2[i]+" de MB2, e "faltas[i]"faltas");
-			System.out.println("Média do aluno "+(i+1)+" ="+vet[i]);
+			System.out.println("Média do aluno "+(i+1)+" ="+vetor[i]);
 		}
 	}
 
