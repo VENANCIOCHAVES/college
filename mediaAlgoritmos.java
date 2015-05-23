@@ -9,39 +9,62 @@
 
 import javax.swing.*;
 public class mediaAlgoritmos{
-	public static void main (String[] args){
-		int n; 
-		double maiorMedia;
+	public static void main (String args[]){
+		
+		int n, opcao;
 		n=Integer.parseInt(JOptionPane.showInputDialog("Entre com o números de alunos da sala"));
-		String[] nome = new String[n];
-		double [] mb1 = new double[n];
-		double [] mb2 = new double[n];
-		double [] mFinal = new double[n];
-		int [] faltas = new int[n];
-		leVetor(nome);
+	
+		String nome[] = new String[n]; //declaração dos vetores
+		
+		double  mb1[] = new double[n];
+		double  mb2[] = new double[n];
+		double faltas[] = new double[n];
+		double  mFinal[] = new double[n];
+		double  maiorMedia[] = new double[n];
+		
+		leNomes(nome); //leNomes recebe os valores
+		
 		leVetor(mb1);
 		leVetor(mb2);
 		leVetor(faltas);
-		escreveVetor(nome, mb1, mb2, faltas);
-		calcula(nome, mb1, mb2, mFinal, faltas);
-		verifica(nome, mFinal);
-
+		
+		escreveVetor(mb1);
+		escreveVetor(mb2);
+		escreveVetor(faltas);
+		
+		calcula(mb1, mb2, faltas);
+		mFinal=calcula(mb1, mb2, faltas);
+		
+		verifica(maiorMedia);
+        
 		
 		opcao=Integer.parseInt(JOptionPane.showInputDialog("Digite:\n1. Cadastrar as médias MB1\n"+
 		    "2. Cadastrar as médias MB2\n"+"3. Cadastrar as faltas dos alunos\n"+
 			"4. Mostrar as médias finais dos alunos\n"+"5. Mostrar a quantidade de alunos aprovados\n"+
 		    "6. Mostrar a maior média da turma\n"+"7. Finalizar programa\n"));
 
+    }
+     
+/****************************************************************
+* Módulo : leNomes 												*
+* Descrição: Lê os nomes de n alunos e armazena em um vetor. 	*
+* Chamada :main 												*
+****************************************************************/
+	public static void leNomes (String[] vetor){
+		for(int i=0; i<vetor.length; i++){
+			vetor[i]=JOptionPane.showInputDialog(null,"Entre com o nome do aluno"+i);
+		}
+	}
 		
-	}	
+		
 /****************************************************************
 * Módulo : leVetor 												*
 * Descrição: Lê os dados de n alunos e armazena em um vetor. 	*
 * Chamada :main 												*
 ****************************************************************/
-	static void leVetor (double[] vetor){
+	public static void leVetor (double[] vetor){
 		for(int i=0; i<vetor.length; i++){
-			vetor[i]=Double.parseDouble(JOptionPane.showInputDialog(null,"Entre com a informação"));
+			vetor[i]=Double.parseDouble(JOptionPane.showInputDialog(null,"Entre com a informação do aluno"+i+"MB1, MB2 e Faltas"));
 		}
 	}
 /********************************************************************
@@ -49,10 +72,10 @@ public class mediaAlgoritmos{
 * Descrição: Mostra os dados de n alunos e armazenados em um vetor. *
 * Chamada :main 													*
 ********************************************************************/
-	static void escreveVetor(double [] vetor){
+	public static void escreveVetor(double [] vetor){
 		for(int i=0; i<vetor.length; i++){
 			//System.out.println("O aluno"nome[i]+" tem" +mb1[i]+" de MB1\n"+mb2[i]+" de MB2, e "faltas[i]"faltas");
-			System.out.println("A média do aluno "+(i+1)+" ="+vet[i]);
+			System.out.println("Média do aluno "+(i+1)+" ="+vet[i]);
 		}
 	}
 
@@ -61,11 +84,13 @@ public class mediaAlgoritmos{
 * Descrição: Calcula e retorna os alunos aprovados. 				*
 * Chamada :main 													*
 ********************************************************************/
-/*	static float calcula{
-		//float mb1, mb2;
-		//final float média = ( (MB1*2) + (MB2*3) )/5;
-		
-		mFinal[i]=( (mb1*2) + (mb2*3) )/5;
+	public static double calcula(double[] vetor, double[] vetor2, double[] vetor3){
+		double vetor4[]= new double[vetor1.length];
+		    for(int i=0; i<vetor.length; i++){
+		        vetor4[i]=( (vetor*2) + (vetor2*3) )/5;
+		        vetor3[i]=vetor3[i]; 
+	        }
+	        return vetor4;
 	}
 	
 /********************************************************************
@@ -73,8 +98,10 @@ public class mediaAlgoritmos{
 * Descrição: Verifica e retorna a maior média da turma. 			*
 * Chamada :main 													*
 ********************************************************************/
-/*	static float verifica{
-	
-	}
-*/
+	public static double verifica(double[] vetor){
+	    for(int i=0; i<vetor.length; i++){
+			vetor[i]=Double.parseDouble(JOptionPane.showInputDialog(null,"Entre com a informação"));
+	    }
+	    return vetor;
+    }
 }
