@@ -21,6 +21,7 @@ public class mediaAlgoritmos{
 		double faltas[] = new double[n];
 		double  mFinal[] = new double[n];
 		double  maiorMedia[] = new double[n];
+		double  aprovados[] = new double[n];
 		
 		leNomes(nome); //leNomes recebe os valores
 		
@@ -32,17 +33,36 @@ public class mediaAlgoritmos{
 		escreveVetor(mb2);
 		escreveVetor(faltas);
 		
-		calcula(mb1, mb2, faltas);
-		mFinal=calcula(mb1, mb2, faltas);
+		calcula(mb1, mb2, faltas, aprovados);
+		//mFinal=calcula(mb1, mb2, faltas);
 		
 		verifica(maiorMedia);
-        
+	
 		
-		opcao=Integer.parseInt(JOptionPane.showInputDialog("Digite:\n1. Cadastrar as médias MB1\n"+
-		    "2. Cadastrar as médias MB2\n"+"3. Cadastrar as faltas dos alunos\n"+
-			"4. Mostrar as médias finais dos alunos\n"+"5. Mostrar a quantidade de alunos aprovados\n"+
-		    "6. Mostrar a maior média da turma\n"+"7. Finalizar programa\n"));
+		opcao=Integer.parseInt(JOptionPane.showInputDialog("Digite:\n1. MB1\n"+"2. MB2\n"+
+			"3. Faltas\n"+"4. Médias Finais\n"+"5. Alunos aprovados\n"+"6. Maior Média\n"+
+			"7. Finalizar\n"));
 
+		switch (opcao){
+		case 1:
+			System.out.println(mb1);
+		case 2:
+			System.out.println(mb2);
+		case 3:
+			System.out.println(faltas);
+		case 4:
+			System.out.println(mFinal);
+		case 5:
+			System.out.println(aprovados);
+		case 6:
+			System.out.println(maiorMedia);
+		case 7:
+			System.exit(0);
+		default:
+			System.out.println("Opção inválida");
+		}
+		
+		
     }
      
 /****************************************************************
@@ -52,7 +72,7 @@ public class mediaAlgoritmos{
 ****************************************************************/
 	public static void leNomes (String[] vetor){
 		for(int i=0; i<vetor.length; i++){
-			vetor[i]=JOptionPane.showInputDialog(null,"Entre com o nome do aluno"+i);
+			vetor[i]=JOptionPane.showInputDialog(null,"Entre com o nome do aluno "+i);
 		}
 	}
 		
@@ -64,7 +84,7 @@ public class mediaAlgoritmos{
 ****************************************************************/
 	public static void leVetor (double[] vetor){
 		for(int i=0; i<vetor.length; i++){
-			vetor[i]=Double.parseDouble(JOptionPane.showInputDialog(null,"Entre com a informação do aluno"+i+"MB1, MB2 e Faltas"));
+			vetor[i]=Double.parseDouble(JOptionPane.showInputDialog(null,"Entre com a informação do aluno "+i+" MB1, MB2 e Faltas"));
 		}
 	}
 /********************************************************************
@@ -84,11 +104,11 @@ public class mediaAlgoritmos{
 * Descrição: Calcula e retorna os alunos aprovados. 				*
 * Chamada :main 													*
 ********************************************************************/
-	public static double calcula(double[] vetor, double[] vetor2, double[] vetor3){
-		double vetor4[]= new double[vetor1.length];
+	public static double calcula(double[] vetor, double[] vetor2, double[] vetor3, double[] vetor4){
+		double vetor5[]= new double[vetor.length];
 		    for(int i=0; i<vetor.length; i++){
-		        vetor4[i]=( (vetor*2) + (vetor2*3) )/5;
-		        vetor3[i]=vetor3[i]; 
+		        vetor5[i]=( (vetor * 2) + (vetor2 * 3) )/5;
+		        vetor3[i]=vetor3[i];
 	        }
 	        return vetor4;
 	}
