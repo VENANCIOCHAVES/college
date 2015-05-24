@@ -46,20 +46,28 @@ public class mediaAlgoritmos{
 		switch (opcao){
 		case 1:
 			System.out.println(mb1);
+			break;
 		case 2:
 			System.out.println(mb2);
+			break;
 		case 3:
 			System.out.println(faltas);
+			break;
 		case 4:
 			System.out.println(mFinal);
+			break;
 		case 5:
 			System.out.println(aprovados);
+			break;
 		case 6:
 			System.out.println(maiorMedia);
+			break;
 		case 7:
 			System.exit(0);
+			break;
 		default:
 			System.out.println("Opção inválida");
+			break;
 		}
 		
 		
