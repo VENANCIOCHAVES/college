@@ -11,34 +11,34 @@ import javax.swing.*;
 public class mediaAlgoritmos{
 	public static void main (String args[]){
 		
-		int n, opcao;
-		n=Integer.parseInt(JOptionPane.showInputDialog("Entre com o números de alunos da sala"));
+		int numero, opcao;
+		numero=Integer.parseInt(JOptionPane.showInputDialog("Entre com o números de alunos da sala"));
 	
-		String nome[] = new String[n]; //declaração dos vetores
+		//declaração dos vetores
+		String nome[] = new String[numero]; 
 		
-		double  mb1[] = new double[n];
-		double  mb2[] = new double[n];
-		double faltas[] = new double[n];
-		double  mFinal[] = new double[n];
-		double  maiorMedia[] = new double[n];
-		double  aprovados[] = new double[n];
+		double  mb1[] = new double[numero];
+		double  mb2[] = new double[numero];
+		double faltas[] = new double[numero];
+		double  mFinal[] = new double[numero];
+		double  maiorMedia[] = new double[numero];
+		double  aprovados[] = new double[numero];
 		
-		leNomes(nome); //leNomes recebe os valores
+		//chamada dos métodos
+		leNomes(nome); 
 		
 		leVetor(mb1);
 		leVetor(mb2);
 		leVetor(faltas);
 		
-		escreveVetor(mb1);
-		escreveVetor(mb2);
-		escreveVetor(faltas);
+		escreveVetor(mb1, nome, mb2, faltas, mFinal);
 		
-		calcula(mb1, mb2, faltas, aprovados);
+		calcula(nome, faltas, mFinal, aprovados);
 		//mFinal=calcula(mb1, mb2, faltas);
 		
-		verifica(maiorMedia);
-	
+		verifica(mFinal);
 		
+		// menu de opcoes
 		opcao=Integer.parseInt(JOptionPane.showInputDialog("Digite:\n1. MB1\n"+"2. MB2\n"+
 			"3. Faltas\n"+"4. Médias Finais\n"+"5. Alunos aprovados\n"+"6. Maior Média\n"+
 			"7. Finalizar\n"));
@@ -100,10 +100,12 @@ public class mediaAlgoritmos{
 * Descrição: Mostra os dados de n alunos e armazenados em um vetor. *
 * Chamada :main 													*
 ********************************************************************/
-	public static void escreveVetor(double [] vetor){
+	public static void escreveVetor(double[] vetor, String[] nome, double[] vetor2, double[] vetor3, double[] vetor4){ //mb1, nome, mb2, faltas, mFinal
 		for(int i=0; i<vetor.length; i++){
-			//System.out.println("O aluno"nome[i]+" tem" +mb1[i]+" de MB1\n"+mb2[i]+" de MB2, e "faltas[i]"faltas");
-			System.out.println("Média do aluno "+(i+1)+" ="+vetor[i]);
+			System.out.println("O aluno "+nome[i]+", tem "+vetor[i]+" de MB1\n"+vetor2[i]+" de MB2, e "+vetor3[i]+" faltas");
+			//System.out.println("Média do aluno "+(i+1)+" ="+vetor[i]);
+			System.out.println("A média do aluno "+nome[i]+", é "+((vetor[i] * 2) + (vetor2[i] * 3))/5);
+			vetor4[i]=((vetor[i] * 2) + (vetor2[i] * 3))/5;
 		}
 	}
 
@@ -112,13 +114,18 @@ public class mediaAlgoritmos{
 * Descrição: Calcula e retorna os alunos aprovados. 				*
 * Chamada :main 													*
 ********************************************************************/
-	public static double calcula(double[] vetor, double[] vetor2, double[] vetor3, double[] vetor4){
-		double vetor5[]= new double[vetor.length];
-		    for(int i=0; i<vetor.length; i++){
-		        vetor5[i]=( (vetor * 2) + (vetor2 * 3) )/5;
-		        vetor3[i]=vetor3[i];
+	public static double calcula(String[] nome, double[] vetor, double[] vetor2, double[] vetor3){ //nome, faltas, mFinal, aprovados
+		double contador = 0;
+		for(int i=0; i<vetor.length; i++){
+			if(vetor[i]<=20 && vetor2[i]>=5){
+		    	System.out.println("O aluno "+nome[i]+", foi aprovado");
+		        contador++;
+			}else{
+				System.out.println("O aluno "+nome[i]+", foi reprovado");
+		    }
+			vetor3[i]=contador;
 	        }
-	        return vetor4;
+		return contador;
 	}
 	
 /********************************************************************
@@ -126,10 +133,13 @@ public class mediaAlgoritmos{
 * Descrição: Verifica e retorna a maior média da turma. 			*
 * Chamada :main 													*
 ********************************************************************/
-	public static double verifica(double[] vetor){
-	    for(int i=0; i<vetor.length; i++){
-			vetor[i]=Double.parseDouble(JOptionPane.showInputDialog(null,"Entre com a informação"));
-	    }
-	    return vetor;
+	public static double verifica(double[] vetor){ //mFinal
+		double contador = 0;
+		for(int i=0; i<vetor.length; i++){
+			if(vetor[i]>contador){
+				contador=vetor[i];
+			}	
+		}
+	    return contador;
     }
 }
